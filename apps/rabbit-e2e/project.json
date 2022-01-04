@@ -1,0 +1,28 @@
+{
+  "root": "apps/rabbit-e2e",
+  "sourceRoot": "apps/rabbit-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/rabbit-e2e/cypress.json",
+        "devServerTarget": "rabbit:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "rabbit:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rabbit-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["rabbit"]
+}
