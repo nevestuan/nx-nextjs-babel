@@ -1,0 +1,73 @@
+{
+  "root": "apps/rabbit-react",
+  "sourceRoot": "apps/rabbit-react/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/rabbit-react",
+        "index": "apps/rabbit-react/src/index.html",
+        "baseHref": "/",
+        "main": "apps/rabbit-react/src/main.js",
+        "polyfills": "apps/rabbit-react/src/polyfills.js",
+        "tsConfig": "apps/rabbit-react/tsconfig.app.json",
+        "assets": [
+          "apps/rabbit-react/src/favicon.ico",
+          "apps/rabbit-react/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/rabbit-react/src/environments/environment.js",
+              "with": "apps/rabbit-react/src/environments/environment.prod.js"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "rabbit-react:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "rabbit-react:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rabbit-react/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/rabbit-react"],
+      "options": {
+        "jestConfig": "apps/rabbit-react/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:app"]
+}

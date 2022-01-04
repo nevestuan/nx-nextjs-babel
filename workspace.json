@@ -2,6 +2,9 @@
   "version": 2,
   "projects": {
     "rabbit": "apps/rabbit",
-    "rabbit-e2e": "apps/rabbit-e2e"
+    "rabbit-core": "libs/rabbit/core",
+    "rabbit-e2e": "apps/rabbit-e2e",
+    "rabbit-react": "apps/rabbit-react",
+    "rabbit-react-e2e": "apps/rabbit-react-e2e"
   }
 }

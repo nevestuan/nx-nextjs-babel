@@ -1,0 +1,43 @@
+{
+  "root": "libs/rabbit/core",
+  "sourceRoot": "libs/rabbit/core/src",
+  "projectType": "library",
+  "tags": ["scope:rabbit", "context:core"],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/rabbit/core",
+        "tsConfig": "libs/rabbit/core/tsconfig.lib.json",
+        "project": "libs/rabbit/core/package.json",
+        "entryFile": "libs/rabbit/core/src/index.js",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/rabbit/core/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/rabbit/core/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/rabbit/core"],
+      "options": {
+        "jestConfig": "libs/rabbit/core/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
